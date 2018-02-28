@@ -1,0 +1,279 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="User.master.cs" Inherits="DIT" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<meta http-equiv="X-UA-Compatible" content="IE=8; IE=7;" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Specimen Tracking System FB-10</title>
+    <link rel="Stylesheet" href="stylesheet.css" type="text/css" />
+    <script src="Scripts/jquery-1.4.3.min.js" type="text/javascript"></script>
+    <link rel="Stylesheet" href="css/jquery-ui-1.8.23.custom.css" type="text/css" />
+    <script type="text/javascript" src="Jquery/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="Jquery/jquery-ui-1.8.23.custom.min.js"></script>
+    <script src="Script.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        #list li ul a
+        {
+            font-size: 11px;
+        }
+    </style>
+    <script language="javascript" type="text/javascript">
+
+        function HideAdminItem() {
+            $("#admin").hide();
+        }
+
+        function SetDimension() {
+            //  alert('coming');
+        }
+        function MM_swapImgRestore() { //v3.0
+            var i, x, a = document.MM_sr; for (i = 0; a && i < a.length && (x = a[i]) && x.oSrc; i++) x.src = x.oSrc;
+        }
+        function MM_preloadImages() { //v3.0
+            var d = document; if (d.images) {
+                if (!d.MM_p) d.MM_p = new Array();
+                var i, j = d.MM_p.length, a = MM_preloadImages.arguments; for (i = 0; i < a.length; i++)
+                    if (a[i].indexOf("#") != 0) { d.MM_p[j] = new Image; d.MM_p[j++].src = a[i]; }
+            }
+        }
+
+        function MM_findObj(n, d) { //v4.01
+            var p, i, x; if (!d) d = document; if ((p = n.indexOf("?")) > 0 && parent.frames.length) {
+                d = parent.frames[n.substring(p + 1)].document; n = n.substring(0, p);
+            }
+            if (!(x = d[n]) && d.all) x = d.all[n]; for (i = 0; !x && i < d.forms.length; i++) x = d.forms[i][n];
+            for (i = 0; !x && d.layers && i < d.layers.length; i++) x = MM_findObj(n, d.layers[i].document);
+            if (!x && d.getElementById) x = d.getElementById(n); return x;
+        }
+
+        function MM_swapImage() { //v3.0
+            var i, j = 0, x, a = MM_swapImage.arguments; document.MM_sr = new Array; for (i = 0; i < (a.length - 2); i += 3)
+                if ((x = MM_findObj(a[i])) != null) { document.MM_sr[j++] = x; if (!x.oSrc) x.oSrc = x.src; x.src = a[i + 2]; }
+        }
+
+
+
+        function checkEnter(e) {
+            e = e || event;
+            return (e.keyCode || event.which || event.charCode || 0) !== 13;
+        }
+
+        function changeBackground(id) {
+
+            //        if (id == "FormEntry") {
+
+            //            document.getElementById("FormEntry").className = 'current';
+            //        }
+            //        else if (id == "FormBLK") {
+
+            //            document.getElementById("FormBLK").className = 'current';
+            //        }
+            //        else if (id == "VitalStatus") {
+
+            //            document.getElementById("VitalStatus").className = 'current';
+            //        }
+            //        else if (id == "ConsentWithdrawal") {
+
+            //            document.getElementById("ConsentWithdrawal").className = 'current';
+            //        }
+            //        else if (id == "Return") {
+
+            //            document.getElementById("Return").className = 'current';
+            //        }
+            //        else if (id == "CliaIdentifiedPatients") {
+
+            //            document.getElementById("CliaIdentifiedPatients").className = 'current';
+            //        }
+            //        
+
+            //        else if (id == "ChangePassword") 
+            //        {
+
+            //            document.getElementById("ChangePassword").className = 'current';
+            //        }
+
+            //        else if (id == "Tracker")
+            //        {
+
+            //            document.getElementById("Tracker").className = 'current';
+            //        }
+
+            if (id == "appadmin") {
+
+                document.getElementById("appadmin").className = 'current';
+            }
+
+            else if (id == "FormEntry") {
+
+                document.getElementById("FormEntry").className = 'current';
+            }
+            else if (id == "FormBLK") {
+
+                document.getElementById("FormBLK").className = 'current';
+            }
+            else if (id == "FormFT") {
+
+                document.getElementById("FormFT").className = 'current';
+            }
+            else if (id == "FormBNK") {
+
+                document.getElementById("FormBNK").className = 'current';
+            }
+            else if (id == "ChangePassword") {
+
+                document.getElementById("ChangePassword").className = 'current';
+            }
+            //            else if (id == "Withdrawal") {
+
+            //                document.getElementById("Withdrawal").className = 'current';
+            //            }
+
+           
+
+        }
+
+
+    </script>
+</head>
+<body onload="SetDimension();">
+    <form id="form1" runat="server">
+    <%--onkeypress="return checkEnter(event)"--%>
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <div id="main">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td background="images/header-bg.jpg">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="10%" height="100" align="center">
+                                <img src="images/logo.png" alt="NSABP" width="204" height="90" />
+                            </td>
+                            <td width="70%" align="center">
+                                <span class="app-header"><span style="font-size: 30px; font-weight: bolder;">S</span>pecimen
+                                    <span style="font-size: 30px; font-weight: bolder;">T</span>racking <span style="font-size: 30px;
+                                        font-weight: bolder;">S</span>ystem
+                                    <br />
+                                    <br />
+                                </span><span class="app-header" style="font-size: 28px; font-weight: bold;">FB-10</span>
+                            </td>
+                            <td width="30%" align="left" valign="top">
+                                <table width="98%" border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td height="23" colspan="3" align="right">
+                                            <table width="60" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="15">
+                                                        <img src="images/lock.png" alt="Logout" border="0" />
+                                                    </td>
+                                                    <td width="45">
+                                                        <asp:LinkButton ID="lbtnlOgout" runat="server" CssClass="logout" OnClick="lbtnlOgout_Click">Logout</asp:LinkButton>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="3%" align="left">
+                                            <img src="images/users.png" alt="Users" width="24" height="24" />
+                                        </td>
+                                        <td width="5%" class="userText">
+                                            User:
+                                        </td>
+                                        <td width="95%" class="userName">
+                                            <asp:Label ID="lblUserNmae" runat="server" Text="ARVIND" class="userName"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="3" colspan="3">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">
+                                            <img src="images/role.png" alt="role" width="24" height="24" />
+                                        </td>
+                                        <td class="userText">
+                                            Role:
+                                        </td>
+                                        <td class="userName">
+                                            <asp:Label ID="lblRole" runat="server" Text="NSABP Admin" class="userName"></asp:Label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td height="6" background="images/bor-bg.png">
+                            </td>
+                            <td width="99%" background="images/bor-bg.png">
+                            </td>
+                            <td height="6" background="images/bor-bg.png">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td background="images/bor-bg.png">
+                            </td>
+                            <td valign="top" bgcolor="#FFFFFF" style="position: absolute; bottom: 25px; left: 0px;
+                                right: 0px; top: 100px">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td height="25">
+                                            <div id="slatenav" style="float: left; width: 100%;">
+                                                <ul id="list" class="adxm menu">
+                                                    <li id="admin"><a id="appadmin" href="#" title="Administrator">Administration</a>
+                                                        <ul>
+                                                            <li><a id="createUser" href="CreateUser.aspx">Create User</a></li>
+                                                            <li><a id="AddSite" href="frmSiteDetails.aspx">Add Site</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a id="FormEntry" href="FormEntry.aspx" title="Form Entry">Patient Consent</a> </li>
+                                                    <li><a id="FormBLK" href="FormBlockDetails.aspx" title="Form BLK">Form BLK</a> </li>
+                                                    <li><a id="FormFT" href="frmFormFTDetails.aspx" title="Form FT">Form FT</a> </li>
+                                                    <li><a id="FormBNK" href="FormBNKDetails.aspx" title="Form BNK">Form BNK</a></li>
+                                                    <li><a id="ChangePassword" href="ChangePassword.aspx" title="Change Password">Change
+                                                        Password</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" align="left">
+                                            <div style="overflow: auto;" class="contentDIV">
+                                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                                </asp:ContentPlaceHolder>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td background="images/bor-bg.png">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="6" background="images/bor-bg.png">
+                            </td>
+                            <td background="images/bor-bg.png">
+                            </td>
+                            <td height="6" background="images/bor-bg.png">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <div style="height: 20px;" class="footer">
+            Copyright &copy;2014, NSABP-Specimen Tracking System FB-10. All Rights Reserved.
+            <asp:Label ID="lblVersion" runat="server" Font-Bold="true" CssClass="hover" ForeColor="#F0FDB9"
+                Text="Prod. Ver 1.0.0"></asp:Label></div>
+    </div>
+    </form>
+</body>
+</html>

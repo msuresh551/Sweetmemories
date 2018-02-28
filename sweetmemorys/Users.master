@@ -1,0 +1,84 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Users.master.cs" Inherits="Users" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+
+        function changeBackground(id) {
+
+            if (id == "index") {
+                document.getElementById("index").className = 'Active';
+            }
+            else if (id == "Contact") {
+
+                document.getElementById("Contact").className = 'active';
+            }
+            else if (id == "About") {
+
+                document.getElementById("About").className = 'active';
+            }
+            else if (id == "Photos") {
+
+                document.getElementById("Photos").className = 'active';
+            }
+            
+        }
+    
+    
+    </script>
+
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <%--Header--%>
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <table style="background-color: #eee; text-align: right;width:100%;padding-right:100px;" cellpadding="0px" cellspacing="0px">
+        <tr>
+            <td>
+                <asp:Label ID="lblUsername"  runat="server" Text="Suresh Mogudala"></asp:Label>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:LinkButton  style=" " Text="Sign Out" runat="server" Height="30px" 
+                    onclick="Unnamed1_Click" Width="120px" />
+            </td>
+        </tr>
+    </table>
+    <div id="header">
+        <div>
+            <ul id="navigation">
+                <li id="index" ><a href="Home.aspx">Home</a> </li>
+                <li id="Photos" ><a href="frmPhotos.aspx">Upload Your Pics</a> </li>
+             <%--   <li id="About"><a href="frmAbout.aspx">About</a> </li>--%>
+                <li id="Contact"><a href="frmContact.aspx">Contact</a> </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <div id="footer">
+        <div class="clearfix">
+            <div id="connect">
+                <a href="https://www.facebook.com/suri.suresh.585" target="_blank" class="facebook">
+                </a><a href="https://plus.google.com/u/0/112618456560828084731/posts" target="_blank"
+                    class="googleplus"></a></a><a href="https://twitter.com/MsuriSuresh" target="_blank"
+                        class="twitter"></a>
+            </div>
+            <p>
+                Copy Rights Reserved © 2014 Hackathon
+            </p>
+        </div>
+    </div>
+    </form>
+</body>
+</html>
